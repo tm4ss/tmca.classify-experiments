@@ -1,11 +1,11 @@
-﻿library(compiler)
+library(compiler)
 enableJIT(3)
 library("tmca.classify")
 
 # For parallelization: register backends
 if(.Platform$OS.type == "unix") {
   require(doMC)
-  registerDoMC(32)
+  registerDoMC(4)
 } else {
   require(doParallel)
   workers <- makeCluster(4, type="SOCK")
